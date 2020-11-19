@@ -5,7 +5,10 @@ import family.dd.member.entity.HandleResult;
 import family.dd.member.entity.UserInfo;
 
 public class FamilyMember {
-    private FamilyRole role;
+    //private FamilyRole role;
+    //private UserInfoRepository userInfoRepository;
+    private FamilyMemberDAO dao ;
+
     private enum UserStatus{
         PREPARED(0),
         INITIALIZED(1),
@@ -31,6 +34,7 @@ public class FamilyMember {
         }
         abstract HandleResult handle(UserInfo user);
     }
+
     private class LoginAuthorizationHandler extends LoginHandler{
         HandleResult handle(UserInfo user){
             if(!hasPermission(user, Privilege.LOG_IN)) {
@@ -67,13 +71,12 @@ public class FamilyMember {
     }
 
     HandleResult login(String account, String encryptedPwd){
-        UserInfo user = getUserInfoByAccount(account);
-
-        if (checkPassword(user, encryptedPwd)) {
+        UserInfo[] users = dao.getUserInfo(account, encryptedPwd);
+        if (users.length!=1){
+            return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Invalid account or password");
+        }else {
             LoginHandler handlerChain = new LoginHandlerChainFactory().getInstance();
-            return handlerChain.handle(user);
-        } else {
-            return new HandleResult(ResponseCode.REQUEST_FORBIDDEN, "Wrong password");
+            return handlerChain.handle(users[0]);
         }
     }
 
@@ -85,9 +88,7 @@ public class FamilyMember {
         return true;
     }
 
-    UserInfo getUserInfoByAccount(String account) {
-        return new UserInfo();
-    }
+
 
     UserInfo getUserInfoByMemberId(int memberId) {
         return new UserInfo();
