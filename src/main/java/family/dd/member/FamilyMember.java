@@ -37,9 +37,9 @@ public class FamilyMember {
 
     private class LoginAuthorizationHandler extends LoginHandler{
         HandleResult handle(UserInfo user){
-            if(!hasPermission(user, Privilege.LOG_IN)) {
+            if(Privilege.hasPermission(Privilege.LOG_IN, 0L)) {
                 return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member login succeed");
-            }else {
+            } else {
                 return next.handle(user);
             }
         }
@@ -56,7 +56,11 @@ public class FamilyMember {
     private class LoginSuccessHandler extends LoginHandler{
         HandleResult handle(UserInfo user){
             //write userinfo into memory cache
+            loadAuthority(user);
             return new HandleResult(ResponseCode.SUCCESS, "Family member login succeed");
+        }
+        long loadAuthority(UserInfo user){
+            return 0L;
         }
     }
 
@@ -80,10 +84,10 @@ public class FamilyMember {
         }
     }
 
-    long loadAuthority(String memberId){
+
+    public long getAuthority(String memberId){
         return 0L;
     }
-
     boolean hasPermission(UserInfo user, Privilege...privileges){
         return true;
     }
