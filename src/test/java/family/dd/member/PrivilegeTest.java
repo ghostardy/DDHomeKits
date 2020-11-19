@@ -21,9 +21,17 @@ class PrivilegeTest {
 
     @Test
     void hasPermission() {
-        System.out.println(Privilege.hasPermission(LOG_IN, 1));
-        System.out.println(Privilege.hasPermission(LOG_IN, 2));
-        System.out.println(Privilege.hasPermission(LOG_IN, 7));
-        System.out.println(Privilege.hasPermission(LOG_IN, 127));
+        assertEquals(true, Privilege.hasPermission(LOG_IN, 1610612751L));
+        assertEquals(true, Privilege.hasPermission(USER_MANAGE, 1610612751L));
+        assertEquals(true, Privilege.hasPermission(METER_VIEW, 1610612751L));
+        assertEquals(true, Privilege.hasPermission(METER_REPORT, 1610612751L));
+        assertEquals(true, Privilege.hasPermission(SYSTEM_ADMIN, 1610612751L));
+        assertEquals(true, Privilege.hasPermission(EXTENSION, 1610612751L));
+        assertEquals(false, Privilege.hasPermission(LOG_IN, 2));
+        assertEquals(false, Privilege.hasPermission(USER_MANAGE, 1));
+        assertEquals(false, Privilege.hasPermission(METER_VIEW, 1));
+        assertEquals(false, Privilege.hasPermission(METER_REPORT, 1));
+        assertEquals(false, Privilege.hasPermission(SYSTEM_ADMIN, 1));
+        assertEquals(false, Privilege.hasPermission(EXTENSION, 1));
     }
 }
