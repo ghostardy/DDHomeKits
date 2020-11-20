@@ -1,14 +1,17 @@
 package family.dd.entity;
 
+import family.dd.defination.UserStatus;
+
 import java.util.Date;
+import java.util.HashSet;
 
 public class UserInfo {
      private int memberId;
      private String account;
      private String password;
      private String nickName;
-     private int status;
-     private String role;
+     private UserStatus status;
+     private HashSet<UserRole> role;
      private Date signUpDate;
 
      public int getMemberId() {
@@ -43,19 +46,19 @@ public class UserInfo {
           this.nickName = nickName;
      }
 
-     public int getStatus() {
+     public UserStatus getStatus() {
           return status;
      }
 
-     public void setStatus(int status) {
+     public void setStatus(UserStatus status) {
           this.status = status;
      }
 
-     public String getRole() {
+     public HashSet<UserRole> getRole() {
           return role;
      }
 
-     public void setRole(String role) {
+     public void setRole(HashSet<UserRole> role) {
           this.role = role;
      }
 
