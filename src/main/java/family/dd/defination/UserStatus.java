@@ -1,16 +1,24 @@
 package family.dd.defination;
 
+/**
+ * Define user status
+ * Only user with PREPARED(0) status is available
+ */
 public enum UserStatus {
     PREPARED(0),
     INITIALIZED(1),
     FREEZE_UP(2),
     DELETED(9),
     UNKNOWN(99);
-    private int status;
-    UserStatus(int status){
-        this.status = status;
+    private int statusCode;
+    UserStatus(int statusCode){
+        this.statusCode = statusCode;
     }
-    public int getIntValue(){
-        return status;
+
+    /**
+     * @return int value of user status code
+     */
+    public int getStatusCode(){
+        return statusCode;
     }
 }
