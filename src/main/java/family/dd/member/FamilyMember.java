@@ -42,17 +42,20 @@ public class FamilyMember {
         }
     }
 
+    /**
+     * Summary authority from user roles
+     * @param user Entity of family member
+     * @return long value of authority
+     */
     public long getAuthority(UserInfo user){
         long authority = 0L;
         HashSet<UserRole> roleList = user.getRole();
-        if (roleList.isEmpty()) {
-            return authority;
-        } else {
+        if (!roleList.isEmpty()) {
             for (UserRole role : roleList) {
                 authority &= role.getAuthority();
             }
-            return authority;
         }
+        return authority;
     }
 
     UserInfo getUserInfo(int memberId) {
