@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public class UserInfo {
      private int memberId;
-     private String account;
+     private String username;
      private String password;
      private String nickName;
      private UserStatus status;
@@ -22,12 +22,12 @@ public class UserInfo {
           this.memberId = memberId;
      }
 
-     public String getAccount() {
-          return account;
+     public String getUsername() {
+          return username;
      }
 
-     public void setAccount(String account) {
-          this.account = account;
+     public void setUsername(String username) {
+          this.username = username;
      }
 
      public String getPassword() {
