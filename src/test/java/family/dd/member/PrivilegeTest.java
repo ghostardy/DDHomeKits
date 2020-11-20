@@ -1,8 +1,9 @@
 package family.dd.member;
 
+import family.dd.defination.Privilege;
 import org.junit.jupiter.api.Test;
 
-import static family.dd.member.Privilege.*;
+import static family.dd.defination.Privilege.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PrivilegeTest {
@@ -21,17 +22,12 @@ class PrivilegeTest {
 
     @Test
     void hasPermission() {
-        assertEquals(true, Privilege.hasPermission(LOG_IN, 1610612751L));
-        assertEquals(true, Privilege.hasPermission(USER_MANAGE, 1610612751L));
-        assertEquals(true, Privilege.hasPermission(METER_VIEW, 1610612751L));
-        assertEquals(true, Privilege.hasPermission(METER_REPORT, 1610612751L));
-        assertEquals(true, Privilege.hasPermission(SYSTEM_ADMIN, 1610612751L));
-        assertEquals(true, Privilege.hasPermission(EXTENSION, 1610612751L));
-        assertEquals(false, Privilege.hasPermission(LOG_IN, 2));
-        assertEquals(false, Privilege.hasPermission(USER_MANAGE, 1));
-        assertEquals(false, Privilege.hasPermission(METER_VIEW, 1));
-        assertEquals(false, Privilege.hasPermission(METER_REPORT, 1));
-        assertEquals(false, Privilege.hasPermission(SYSTEM_ADMIN, 1));
-        assertEquals(false, Privilege.hasPermission(EXTENSION, 1));
+        assertEquals(true, Privilege.hasPermission(1610612751L, LOG_IN, USER_MANAGE, METER_VIEW, METER_REPORT, SYSTEM_ADMIN, EXTENSION));
+        assertEquals(false, Privilege.hasPermission(0, LOG_IN));
+        assertEquals(false, Privilege.hasPermission(0, USER_MANAGE));
+        assertEquals(false, Privilege.hasPermission(0, METER_VIEW));
+        assertEquals(false, Privilege.hasPermission(0, METER_REPORT));
+        assertEquals(false, Privilege.hasPermission(0, SYSTEM_ADMIN));
+        assertEquals(false, Privilege.hasPermission(0, EXTENSION));
     }
 }

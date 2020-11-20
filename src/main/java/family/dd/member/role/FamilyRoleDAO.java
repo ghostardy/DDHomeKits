@@ -1,4 +1,4 @@
-package family.dd.member;
+package family.dd.member.role;
 
 public class FamilyRoleDAO {
 }

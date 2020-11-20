@@ -1,9 +1,7 @@
 package family.dd.member;
 
-import family.dd.member.entity.UserInfo;
+import family.dd.entity.UserInfo;
 
-public class FamilyMemberDAO {
-    UserInfo[] getUserInfo(String account, String encryptedPwd) {
-        return new UserInfo[]{new UserInfo()};
-    }
+class FamilyMemberDAO {
+
 }

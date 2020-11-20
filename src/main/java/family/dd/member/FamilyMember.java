@@ -1,85 +1,32 @@
 package family.dd.member;
 
 
-import family.dd.member.entity.HandleResult;
-import family.dd.member.entity.UserInfo;
+import family.dd.defination.Privilege;
+import family.dd.defination.ResponseCode;
+import family.dd.entity.HandleResult;
+import family.dd.entity.UserInfo;
+import family.dd.member.handler.LoginHandler;
+import family.dd.member.handler.LoginHandlerFactory;
+import family.dd.member.role.FamilyRole;
+
+import static family.dd.common.util.CommonUtil.isEmptyString;
 
 public class FamilyMember {
-    //private FamilyRole role;
+    private FamilyRole role;
     //private UserInfoRepository userInfoRepository;
-    private FamilyMemberDAO dao ;
+    private FamilyMemberRepository repository ;
 
-    private enum UserStatus{
-        PREPARED(0),
-        INITIALIZED(1),
-        FREEZE_UP(2),
-        DELETED(9),
-        UNKNOWN(99);
-        private int status;
-        UserStatus(int status){
-            this.status = status;
-        }
-        public int getIntValue(){
-            return status;
-        }
-    }
+
     HandleResult recover(String memberId){
-        return new HandleResult(ResponseCode.SUCCESS, "Family member login status recoverd");
-    }
-
-    private abstract class LoginHandler{
-        protected LoginHandler next;
-        protected LoginHandler setNext(LoginHandler next){
-            return this.next = next;
-        }
-        abstract HandleResult handle(UserInfo user);
-    }
-
-    private class LoginAuthorizationHandler extends LoginHandler{
-        HandleResult handle(UserInfo user){
-            if(Privilege.hasPermission(Privilege.LOG_IN, 0L)) {
-                return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member login succeed");
-            } else {
-                return next.handle(user);
-            }
-        }
-    }
-    private class LoginUserStatusHandler extends LoginHandler{
-        HandleResult handle(UserInfo user){
-            if (UserStatus.PREPARED.getIntValue() == user.getStatus()) {
-                return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member login succeed");
-            }else {
-                return next.handle(user);
-            }
-        }
-    }
-    private class LoginSuccessHandler extends LoginHandler{
-        HandleResult handle(UserInfo user){
-            //write userinfo into memory cache
-            loadAuthority(user);
-            return new HandleResult(ResponseCode.SUCCESS, "Family member login succeed");
-        }
-        long loadAuthority(UserInfo user){
-            return 0L;
-        }
-    }
-
-    private class LoginHandlerChainFactory{
-        public LoginHandler getInstance() {
-            LoginHandler step1 = new LoginUserStatusHandler();
-            LoginHandler step2 = new LoginAuthorizationHandler();
-            LoginHandler step3 = new LoginSuccessHandler();
-            step1.setNext(step2).setNext(step3);
-            return step1;
-        }
+        return new HandleResult(ResponseCode.SUCCESS, "Family member login status is recovered");
     }
 
     HandleResult login(String account, String encryptedPwd){
-        UserInfo[] users = dao.getUserInfo(account, encryptedPwd);
+        UserInfo[] users = repository.getUserInfo(account, encryptedPwd);
         if (users.length!=1){
             return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Invalid account or password");
         }else {
-            LoginHandler handlerChain = new LoginHandlerChainFactory().getInstance();
+            LoginHandler handlerChain = new LoginHandlerFactory().getInstance();
             return handlerChain.handle(users[0]);
         }
     }
@@ -88,20 +35,12 @@ public class FamilyMember {
     public long getAuthority(String memberId){
         return 0L;
     }
-    boolean hasPermission(UserInfo user, Privilege...privileges){
-        return true;
-    }
 
-
-
-    UserInfo getUserInfoByMemberId(int memberId) {
+    UserInfo getUserInfo(int memberId) {
         return new UserInfo();
     }
 
     boolean checkPassword(UserInfo user, String password){
         return isEmptyString(password)? false : user.getPassword().equals(password);
-    }
-    boolean isEmptyString(String str) {
-        return null==str||str.isEmpty()||str.equals("");
     }
 }

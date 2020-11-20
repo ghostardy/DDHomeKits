@@ -1,4 +1,4 @@
-package family.dd.member;
+package family.dd.defination;
 
 public enum ResponseCode {
     HANDLING(100),

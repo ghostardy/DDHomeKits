@@ -1,17 +1,17 @@
-package family.dd.member.entity;
+package family.dd.entity;
 
-import family.dd.member.ResponseCode;
+import family.dd.defination.ResponseCode;
 
 public class HandleResult {
     private ResponseCode code;
     private String message;
 
-    HandleResult(){
+    public HandleResult(){
         this.code = ResponseCode.HANDLING;
         this.message = "Handling request";
     }
 
-    HandleResult(ResponseCode code, String message){
+    public HandleResult(ResponseCode code, String message){
         this.code = code;
         this.message = message;
     }

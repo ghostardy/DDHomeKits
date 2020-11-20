@@ -1,4 +1,4 @@
-package family.dd.member.entity;
+package family.dd.entity;
 
 import java.util.Date;
 
