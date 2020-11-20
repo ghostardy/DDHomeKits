@@ -7,7 +7,7 @@ import family.dd.entity.UserInfo;
 
 class LoginUserStatusHandler extends LoginHandler{
     public HandleResult handle(UserInfo user){
-        if (UserStatus.PREPARED.getIntValue() == user.getStatus()) {
+        if (user.getStatus().equals(UserStatus.PREPARED)) {
             return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member login succeed");
         }else {
             return next.handle(user);
