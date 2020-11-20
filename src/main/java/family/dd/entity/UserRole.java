@@ -6,7 +6,6 @@ public class UserRole {
     private int roleId;
     private String roleName;
     private long authority;
-    private int status;
     private String description;
     private Date signUpDate;
 
@@ -32,14 +31,6 @@ public class UserRole {
 
     public void setAuthority(long authority) {
         this.authority = authority;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public String getDescription() {
