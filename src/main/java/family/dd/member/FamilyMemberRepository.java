@@ -7,4 +7,7 @@ class FamilyMemberRepository {
     UserInfo[] getUserInfo(String account, String encryptedPwd) {
         return new UserInfo[]{new UserInfo()};
     }
+    UserInfo[] getUserInfo(int memberId) {
+        return new UserInfo[]{new UserInfo()};
+    }
 }
