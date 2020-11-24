@@ -9,8 +9,13 @@ public enum ResponseCode {
     SERVER_ERROR(500),
     UNKNOWN(999);
 
+
     private int code;
     ResponseCode(int code){
         this.code = code;
+    }
+
+    public int getCode() {
+        return code;
     }
 }
