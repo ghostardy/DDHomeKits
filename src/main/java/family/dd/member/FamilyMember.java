@@ -29,11 +29,12 @@ public class FamilyMember {
     /**
      * Authorize user and put userinfo into cache
      * @param username username inputted by user
-     * @param encryptedPwd password inputted by user and encrypted by SafetyGuarder in FamilyMemberService
+     * @param password password inputted by front user
      * @return HandleResult
      */
-    public HandleResult login(String username, String encryptedPwd){
-        UserInfo[] users = repository.getUserInfo(username, encryptedPwd);
+    public HandleResult login(String username, String password){
+        String encryptedPassword = "password handled by PasswordHandler" + password;
+        UserInfo[] users = repository.getUserInfo(username, encryptedPassword);
         if (users.length!=1){
             return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Invalid account or password");
         }else {
@@ -47,8 +48,11 @@ public class FamilyMember {
      * @param user Entity of family member
      * @return long value of authority
      */
-    public long getAuthority(UserInfo user){
+    public long getUserAuthority(UserInfo user){
         long authority = 0L;
+        if (isNull(user)) {
+            return authority;
+        }
         HashSet<UserRole> roleList = user.getRole();
         if (!roleList.isEmpty()) {
             for (UserRole role : roleList) {
