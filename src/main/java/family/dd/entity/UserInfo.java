@@ -12,7 +12,19 @@ public class UserInfo {
      private String nickName;
      private UserStatus status;
      private HashSet<UserRole> role;
+     private UserExtraInfo extraInfo;
      private Date signUpDate;
+
+     public UserInfo() {
+          this("", "");
+     }
+     public UserInfo(String username, String password) {
+          this.username = username;
+          this.password = password;
+          this.role = new HashSet();
+          this.extraInfo = new UserExtraInfo();
+          this.signUpDate = new Date();
+     }
 
      public int getMemberId() {
           return memberId;
@@ -62,6 +74,13 @@ public class UserInfo {
           this.role = role;
      }
 
+     public UserExtraInfo getExtraInfo() {
+          return extraInfo;
+     }
+
+     public void setExtraInfo(UserExtraInfo extraInfo) {
+          this.extraInfo = extraInfo;
+     }
      public Date getSignUpDate() {
           return signUpDate;
      }
