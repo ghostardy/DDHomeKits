@@ -1,4 +1,4 @@
-package family.dd.member;
+package family.dd.defination;
 
 import family.dd.defination.Privilege;
 import org.junit.jupiter.api.Test;

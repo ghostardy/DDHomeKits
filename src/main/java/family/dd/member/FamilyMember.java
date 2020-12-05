@@ -30,7 +30,7 @@ public class FamilyMember {
     }
 
     /**
-     * Authorize user and put userinfo into cache
+     * Authorize user and put user info into cache
      * @param username username inputted by user
      * @param password password inputted by front user
      * @return HandleResult

@@ -3,7 +3,7 @@ package family.dd.member;
 import family.dd.defination.ResponseCode;
 
 public class ServiceResponse {
-    private int code= ResponseCode.HANDLING.getCode();
+    private int code= ResponseCode.HANDLING.getCodeValue();
     private String message="handling";
     private String data="{}";
 
