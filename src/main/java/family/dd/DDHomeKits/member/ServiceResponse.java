@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.member;
 
-import family.dd.DDHomeKits.defination.ResponseCode;
+import family.dd.DDHomeKits.definition.ResponseCode;
 
 public class ServiceResponse {
     private int code= ResponseCode.HANDLING.getCodeValue();

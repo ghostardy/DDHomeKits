@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.entity;
 
-import family.dd.DDHomeKits.defination.UserStatus;
+import family.dd.DDHomeKits.definition.UserStatus;
 
 import java.sql.Timestamp;
 
@@ -15,7 +15,7 @@ public class UserInfo {
      private String nickName;
      private UserStatus status;
      private long authority;
-     private String extraInfo;
+     private UserExtraInfo extraInfo;
      private Timestamp signUpDate;
 
      public UserInfo() {
@@ -25,7 +25,7 @@ public class UserInfo {
           this.username = username;
           this.password = password;
           this.authority = 0L;
-          this.extraInfo = "{}";
+          this.extraInfo = new UserExtraInfo();
           this.signUpDate = new Timestamp(System.currentTimeMillis());
      }
 
@@ -77,11 +77,11 @@ public class UserInfo {
           this.authority = authority;
      }
 
-     public String getExtraInfo() {
+     public UserExtraInfo getExtraInfo() {
           return extraInfo;
      }
 
-     public void setExtraInfo(String extraInfo) {
+     public void setExtraInfo(UserExtraInfo extraInfo) {
           this.extraInfo = extraInfo;
      }
 

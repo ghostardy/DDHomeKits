@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.mapper;
 
-import family.dd.DDHomeKits.defination.UserStatus;
+import family.dd.DDHomeKits.definition.UserStatus;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;

@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.member.handler;
 
-import family.dd.DDHomeKits.defination.ResponseCode;
+import family.dd.DDHomeKits.definition.ResponseCode;
 import family.dd.DDHomeKits.entity.HandleResult;
 import family.dd.DDHomeKits.entity.UserInfo;
 

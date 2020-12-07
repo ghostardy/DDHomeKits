@@ -1,25 +1,19 @@
 package family.dd.DDHomeKits.member;
 
-import family.dd.DDHomeKits.defination.ResponseCode;
+import family.dd.DDHomeKits.definition.ResponseCode;
 import family.dd.DDHomeKits.entity.HandleResult;
 import family.dd.DDHomeKits.entity.UserInfo;
-import family.dd.DDHomeKits.entity.UserRole;
 import family.dd.DDHomeKits.member.handler.LoginHandler;
 import family.dd.DDHomeKits.member.handler.LoginHandlerFactory;
 import family.dd.DDHomeKits.member.handler.PasswordHandler;
 import family.dd.DDHomeKits.member.handler.PasswordHandlerFactory;
-import family.dd.DDHomeKits.member.role.FamilyRole;
-
-import java.util.HashSet;
 
 import static family.dd.DDHomeKits.util.CommonUtil.isEmptyString;
-import static family.dd.DDHomeKits.util.CommonUtil.isNull;
 
 /**
  * Users action as family member
  */
 public class FamilyMember {
-    private FamilyRole role;
     private FamilyMemberRepository repository ;
     private LoginHandlerFactory loginHandlerFactory;
 
@@ -55,25 +49,6 @@ public class FamilyMember {
             }
         }
     }
-
-    /**
-     * Summary authority from user roles
-     * @param user Entity of family member
-     * @return long value of authority
-     */
-//    public long getUserAuthority(UserInfo user){
-//        long authority = 0L;
-//        if (isNull(user)) {
-//            return authority;
-//        }
-//        HashSet<UserRole> roleList = user.getRole();
-//        if (!roleList.isEmpty()) {
-//            for (UserRole role : roleList) {
-//                authority &= role.getAuthority();
-//            }
-//        }
-//        return authority;
-//    }
 
     UserInfo getUserInfo(int memberId) {
         return new UserInfo("","");

@@ -15,7 +15,7 @@ public interface UserInfoMapper {
             @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.mapper.UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
-            @Result(property="extraInfo", column="extraInfo"),
+            @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
     List<UserInfo> findUserById(int userId);
@@ -28,7 +28,7 @@ public interface UserInfoMapper {
             @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.mapper.UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
-            @Result(property="extraInfo", column="extraInfo"),
+            @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
     List<UserInfo> findUserByAccount(String account);
@@ -44,7 +44,7 @@ public interface UserInfoMapper {
             "#{userInfo.nickName}，" +
             "#{userInfo.status,typeHandler=family.dd.DDHomeKits.mapper.UserStatusTypeHandler}，" +
             "#{userInfo.authority}，" +
-            "#{userInfo.extraInfo}，" +
+            "#{userInfo.extraInfo, typeHandler=family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler}，" +
             "#{userInfo.signUpDate}")
     void addUser(UserInfo userInfo);
 }

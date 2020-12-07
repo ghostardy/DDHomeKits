@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.entity;
 
-import family.dd.DDHomeKits.defination.ResponseCode;
+import family.dd.DDHomeKits.definition.ResponseCode;
 
 public class HandleResult {
     private ResponseCode code;
