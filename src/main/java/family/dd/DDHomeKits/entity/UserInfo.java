@@ -2,18 +2,21 @@ package family.dd.DDHomeKits.entity;
 
 import family.dd.DDHomeKits.defination.UserStatus;
 
-import java.util.Date;
-import java.util.HashSet;
+import java.sql.Timestamp;
 
+/**
+ * Entity of Database, UserInfo table
+ * UserStatus need to TransType to int
+ */
 public class UserInfo {
-     private int memberId;
+     private int userId;
      private String username;
      private String password;
      private String nickName;
      private UserStatus status;
-     private HashSet<UserRole> role;
-     private UserExtraInfo extraInfo;
-     private Date signUpDate;
+     private long authority;
+     private String extraInfo;
+     private Timestamp signUpDate;
 
      public UserInfo() {
           this("", "");
@@ -21,17 +24,17 @@ public class UserInfo {
      public UserInfo(String username, String password) {
           this.username = username;
           this.password = password;
-          this.role = new HashSet();
-          this.extraInfo = new UserExtraInfo();
-          this.signUpDate = new Date();
+          this.authority = 0L;
+          this.extraInfo = "{}";
+          this.signUpDate = new Timestamp(System.currentTimeMillis());
      }
 
-     public int getMemberId() {
-          return memberId;
+     public int getUserId() {
+          return userId;
      }
 
-     public void setMemberId(int memberId) {
-          this.memberId = memberId;
+     public void setUserId(int userId) {
+          this.userId = userId;
      }
 
      public String getUsername() {
@@ -66,26 +69,27 @@ public class UserInfo {
           this.status = status;
      }
 
-     public HashSet<UserRole> getRole() {
-          return role;
+     public long getAuthority() {
+          return authority;
      }
 
-     public void setRole(HashSet<UserRole> role) {
-          this.role = role;
+     public void setAuthority(long authority) {
+          this.authority = authority;
      }
 
-     public UserExtraInfo getExtraInfo() {
+     public String getExtraInfo() {
           return extraInfo;
      }
 
-     public void setExtraInfo(UserExtraInfo extraInfo) {
+     public void setExtraInfo(String extraInfo) {
           this.extraInfo = extraInfo;
      }
-     public Date getSignUpDate() {
+
+     public Timestamp getSignUpDate() {
           return signUpDate;
      }
 
-     public void setSignUpDate(Date signUpDate) {
+     public void setSignUpDate(Timestamp signUpDate) {
           this.signUpDate = signUpDate;
      }
 }
