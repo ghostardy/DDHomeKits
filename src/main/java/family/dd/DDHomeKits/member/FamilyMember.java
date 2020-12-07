@@ -40,7 +40,8 @@ public class FamilyMember {
         if (users.length!=1){
             return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Invalid account or password");
         }else {
-            int pwdStrategy = users[0].getExtraInfo().getPwdStrategy();
+            //int pwdStrategy = users[0].getExtraInfo().getPwdStrategy();
+            int pwdStrategy = 1;
             PasswordHandler pwdHandler = new PasswordHandlerFactory().getInstance(pwdStrategy);
             HandleResult pwdHandleResult = pwdHandler.handle(new UserInfo(username, password));
 
@@ -60,19 +61,19 @@ public class FamilyMember {
      * @param user Entity of family member
      * @return long value of authority
      */
-    public long getUserAuthority(UserInfo user){
-        long authority = 0L;
-        if (isNull(user)) {
-            return authority;
-        }
-        HashSet<UserRole> roleList = user.getRole();
-        if (!roleList.isEmpty()) {
-            for (UserRole role : roleList) {
-                authority &= role.getAuthority();
-            }
-        }
-        return authority;
-    }
+//    public long getUserAuthority(UserInfo user){
+//        long authority = 0L;
+//        if (isNull(user)) {
+//            return authority;
+//        }
+//        HashSet<UserRole> roleList = user.getRole();
+//        if (!roleList.isEmpty()) {
+//            for (UserRole role : roleList) {
+//                authority &= role.getAuthority();
+//            }
+//        }
+//        return authority;
+//    }
 
     UserInfo getUserInfo(int memberId) {
         return new UserInfo("","");
