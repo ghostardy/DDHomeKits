@@ -1,10 +1,12 @@
-CREATE TABLE IF NOT EXISTS ORDER_DETAIL
+CREATE TABLE IF NOT EXISTS UserInfo
 (
-order_id int PRIMARY KEY auto_increment,
-order_user varchar(12),
-order_at bigint,
-order_status int,
-order_extra varchar(100),
-order_date timestamp
+    userId int PRIMARY KEY auto_increment,
+    username varchar (50),
+    password varchar (1024),
+    nickName varchar (50),
+    status int,
+    authority bigint,
+    extraInfo varchar (1024),
+    signUpDate timestamp
 );
-GRANT ALL ON ORDER_DETAIL TO sa;
+GRANT ALL ON UserInfo TO sa;
