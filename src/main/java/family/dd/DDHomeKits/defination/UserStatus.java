@@ -1,5 +1,7 @@
 package family.dd.DDHomeKits.defination;
 
+import org.h2.engine.User;
+
 /**
  * Define user status
  * Only user with PREPARED(0) status is available
@@ -14,11 +16,18 @@ public enum UserStatus {
     UserStatus(int statusCode){
         this.statusCode = statusCode;
     }
-
     /**
      * @return int value of user status code
      */
     public int getStatusCode(){
         return statusCode;
+    }
+    public static UserStatus getUserStatus(int statusCode){
+        for(UserStatus us : UserStatus.values()){
+            if (statusCode == us.getStatusCode()){
+                return us;
+            }
+        }
+        return UserStatus.UNKNOWN;
     }
 }
