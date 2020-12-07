@@ -14,7 +14,7 @@ class FamilyMemberRepository {
         return new UserInfo[]{new UserInfo("","")};
     }
     List<UserInfo> getUserInfo(int userId) {
-        return mapper.findUserById(1);
+        return mapper.findUserById(userId);
     }
 
     public UserInfoMapper getMapper() {
