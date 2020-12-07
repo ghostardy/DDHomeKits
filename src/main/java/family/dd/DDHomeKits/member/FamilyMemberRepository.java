@@ -1,13 +1,28 @@
 package family.dd.DDHomeKits.member;
 
 import family.dd.DDHomeKits.entity.UserInfo;
+import family.dd.DDHomeKits.mapper.UserInfoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 class FamilyMemberRepository {
-    private FamilyMemberDAO dao;
+    private UserInfoMapper mapper;
     UserInfo[] getUserInfo(String account) {
         return new UserInfo[]{new UserInfo("","")};
     }
-    UserInfo[] getUserInfo(int memberId) {
-        return new UserInfo[]{new UserInfo("","")};
+    List<UserInfo> getUserInfo(int userId) {
+        return mapper.findUserById(1);
+    }
+
+    public UserInfoMapper getMapper() {
+        return mapper;
+    }
+
+    @Autowired
+    public void setMapper(UserInfoMapper mapper) {
+        this.mapper = mapper;
     }
 }
