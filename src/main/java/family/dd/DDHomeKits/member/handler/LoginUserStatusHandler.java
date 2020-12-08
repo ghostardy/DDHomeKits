@@ -7,8 +7,8 @@ import family.dd.DDHomeKits.entity.UserInfo;
 
 class LoginUserStatusHandler extends LoginHandler{
     public HandleResult handle(UserInfo user){
-        if (user.getStatus().equals(UserStatus.PREPARED)) {
-            return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member login succeed");
+        if (!user.getStatus().equals(UserStatus.PREPARED)) {
+            return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Family member status error");
         }else {
             return next.handle(user);
         }
