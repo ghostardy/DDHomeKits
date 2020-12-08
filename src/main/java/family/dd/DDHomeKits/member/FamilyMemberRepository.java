@@ -7,18 +7,50 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ *  Family member Repository
+ *  Store user data into table UserInfo
+ */
 @Repository
-class FamilyMemberRepository {
+public class FamilyMemberRepository {
+    /**
+     * Mapper managed by mybatis
+     */
     private UserInfoMapper mapper;
-    UserInfo[] getUserInfo(String account) {
-        return new UserInfo[]{new UserInfo("","")};
-    }
-    List<UserInfo> getUserInfo(int userId) {
-        return mapper.findUserById(userId);
+
+    /**
+     * Used in login situation
+     * @param username
+     * @param password
+     * @return User lists
+     */
+    public List<UserInfo> getUserInfo(String username, String password) {
+        return mapper.findUserByUsernameAndPassword(username, password);
     }
 
-    public UserInfoMapper getMapper() {
-        return mapper;
+    /**
+     * Used by signed in users
+     * @param userId
+     * @return User lists
+     */
+    public List<UserInfo> getUserInfo(int userId) {
+        return mapper.findUserByUserid(userId);
+    }
+
+    /**
+     * For user management
+     * @param userInfo
+     */
+    void addUserInfo(UserInfo userInfo){
+        mapper.addUser(userInfo);
+    }
+
+    /**
+     * For test use
+     * @param userInfo
+     */
+    void rmvUserInfo(UserInfo userInfo){
+        mapper.rmvUser(userInfo);
     }
 
     @Autowired
