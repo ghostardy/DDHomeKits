@@ -8,6 +8,7 @@ public enum UserStatus {
     PREPARED(0),
     INITIALIZED(1),
     FREEZE_UP(2),
+    NEED_RESET_PASSWORD(3),
     DELETED(9),
     UNKNOWN(99);
     private int statusCode;
