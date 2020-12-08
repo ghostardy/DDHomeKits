@@ -1,17 +1,12 @@
 package family.dd.DDHomeKits.member.handler;
 
 public class PasswordHandlerFactory {
-    public PasswordHandler getInstance(int pwdStrategy){
-        switch(pwdStrategy){
-            default :
-                return generateStrategy1();
-        }
-    }
-    private PasswordHandler generateStrategy1(){
-        PasswordHandler step1 = new PasswordSHA256Handler();
-        PasswordHandler step2 = new PasswordSimpleSaltHandler();
-        PasswordHandler step3 = step1;
-        PasswordHandler finalStep = step2;
+    public static PasswordHandler getInstance(){
+        PasswordHandler step1 = new PasswordSimpleSaltHandler();
+        PasswordHandler step2 = new PasswordSHA256Handler();
+        PasswordHandler step3 = new PasswordSimpleSaltHandler();
+        PasswordHandler finalStep = new PasswordSHA256Handler();
+
         step1.setNext(step2).setNext(step3).setNext(finalStep);
         return step1;
     }
