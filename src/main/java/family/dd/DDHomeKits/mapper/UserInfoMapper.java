@@ -7,31 +7,43 @@ import java.util.List;
 
 @Mapper
 public interface UserInfoMapper {
-    @Select("Select * from UserInfo where userId=#{userId}")
+    @Select("Select userId," +
+            "username," +
+            "nickName," +
+            "status," +
+            "authority," +
+            "extraInfo," +
+            "signUpDate" +
+            " from UserInfo where userId=#{userId}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="password", column="password"),
             @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.mapper.UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
             @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
-    List<UserInfo> findUserById(int userId);
+    List<UserInfo> findUserByUserid(int userId);
 
-    @Select("Select * from UserInfo where account=#{account}")
+    @Select("Select userId," +
+            "username," +
+            "nickName," +
+            "status," +
+            "authority," +
+            "extraInfo," +
+            "signUpDate" +
+            " from UserInfo where username=#{username} and password=#{password}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="password", column="password"),
             @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.mapper.UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
             @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
-    List<UserInfo> findUserByAccount(String account);
+    List<UserInfo> findUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     @Insert("Insert into UserInfo(username," +
             "password," +
@@ -39,12 +51,15 @@ public interface UserInfoMapper {
             "status," +
             "authority," +
             "extraInfo," +
-            "signUpDate) values(#{userInfo.username}," +
-            "#{userInfo.password}，" +
-            "#{userInfo.nickName}，" +
-            "#{userInfo.status,typeHandler=family.dd.DDHomeKits.mapper.UserStatusTypeHandler}，" +
-            "#{userInfo.authority}，" +
-            "#{userInfo.extraInfo, typeHandler=family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler}，" +
-            "#{userInfo.signUpDate}")
+            "signUpDate) values(#{username}," +
+            "#{password}," +
+            "#{nickName}," +
+            "#{status,typeHandler=family.dd.DDHomeKits.mapper.UserStatusTypeHandler}," +
+            "#{authority}," +
+            "#{extraInfo, typeHandler=family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler}," +
+            "#{signUpDate})")
     void addUser(UserInfo userInfo);
+
+    @Delete("Delete from UserInfo where username = #{username}")
+    void rmvUser(UserInfo userInfo);
 }
