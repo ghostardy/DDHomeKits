@@ -7,7 +7,7 @@ import family.dd.DDHomeKits.entity.UserInfo;
 import static family.dd.DDHomeKits.util.CommonUtil.isNull;
 
 public class PasswordSimpleSaltHandler extends PasswordHandler{
-    private final String SIMPLE_SALT = "My-name-is-link-not-Zelda-also-not-Luigi!";
+    private static final String SIMPLE_SALT = "My-name-is-link-not-Zelda-also-not-Luigi!";
 
     @Override
     public HandleResult handle(UserInfo user) {
@@ -18,8 +18,13 @@ public class PasswordSimpleSaltHandler extends PasswordHandler{
         if (isNull(next)) {
             return new HandleResult(ResponseCode.SUCCESS, pwdWithSalt);
         }else {
-            user.setPassword(pwdWithSalt);
-            return next.handle(user);
+            UserInfo ui = new UserInfo(user);
+            ui.setPassword(pwdWithSalt);
+            return next.handle(ui);
         }
+    }
+
+    static String getSalt(){
+        return SIMPLE_SALT;
     }
 }
