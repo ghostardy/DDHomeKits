@@ -7,8 +7,7 @@ public class HandleResult {
     private String message;
 
     public HandleResult(){
-        this.code = ResponseCode.HANDLING;
-        this.message = "Handling request";
+        this(ResponseCode.HANDLING, "Handling request");
     }
 
     public HandleResult(ResponseCode code, String message){
