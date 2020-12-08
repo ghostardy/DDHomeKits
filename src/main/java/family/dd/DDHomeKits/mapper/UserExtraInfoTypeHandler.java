@@ -23,7 +23,7 @@ public class UserExtraInfoTypeHandler extends BaseTypeHandler<UserExtraInfo> {
 
     @Override
     public UserExtraInfo getNullableResult(ResultSet resultSet, String s) throws SQLException {
-        return gson.fromJson(s, UserExtraInfo.class);
+        return gson.fromJson(resultSet.getString(s), UserExtraInfo.class);
     }
 
     @Override
