@@ -1,5 +1,6 @@
 package family.dd.DDHomeKits.member;
 
+import family.dd.DDHomeKits.entity.UserInfo;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,7 @@ public class FamilyMemberController {
 
     @GetMapping("/login")
     public String login(){
-        String username = "username";
-        String password = "password";
+        UserInfo userInfo = new UserInfo("username", "password");
 
         //familyMember.login("username", "password");
         //return new ServiceResponse().toJson();
