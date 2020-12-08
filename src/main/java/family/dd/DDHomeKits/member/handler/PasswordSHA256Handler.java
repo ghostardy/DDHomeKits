@@ -3,12 +3,14 @@ package family.dd.DDHomeKits.member.handler;
 import family.dd.DDHomeKits.definition.ResponseCode;
 import family.dd.DDHomeKits.entity.HandleResult;
 import family.dd.DDHomeKits.entity.UserInfo;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import static family.dd.DDHomeKits.util.CommonUtil.isNull;
 
+/**
+ * Handle user password by sha256
+ * Added to Password handle chain
+ */
 public class PasswordSHA256Handler extends PasswordHandler{
     @Override
     public HandleResult handle(UserInfo user) {
@@ -22,8 +24,9 @@ public class PasswordSHA256Handler extends PasswordHandler{
         if (isNull(next)){
             return new HandleResult(ResponseCode.SUCCESS, digest);
         }else {
-            user.setPassword(digest);
-            return next.handle(user);
+            UserInfo ui = new UserInfo(user);
+            ui.setPassword(digest);
+            return next.handle(ui);
         }
     }
 
