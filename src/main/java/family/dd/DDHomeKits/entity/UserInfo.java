@@ -24,9 +24,20 @@ public class UserInfo {
      public UserInfo(String username, String password) {
           this.username = username;
           this.password = password;
+          this.nickName = "";
+          this.status = UserStatus.INITIALIZED;
           this.authority = 0L;
           this.extraInfo = new UserExtraInfo();
           this.signUpDate = new Timestamp(System.currentTimeMillis());
+     }
+     public UserInfo(UserInfo userInfo){
+          this.username = userInfo.getUsername();
+          this.password = userInfo.getPassword();
+          this.nickName = userInfo.getNickName();
+          this.status = userInfo.getStatus();
+          this.authority = userInfo.getAuthority();
+          this.extraInfo = userInfo.getExtraInfo();
+          this.signUpDate = userInfo.getSignUpDate();
      }
 
      public int getUserId() {
