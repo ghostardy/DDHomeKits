@@ -29,6 +29,15 @@ public class FamilyMemberRepository {
     }
 
     /**
+     * Used in sign up situation
+     * @param username
+     * @return User lists
+     */
+    public List<UserInfo> getUserInfo(String username) {
+        return mapper.findUserByUsername(username);
+    }
+
+    /**
      * Used by signed in users
      * @param userId
      * @return User lists
