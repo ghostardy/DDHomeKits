@@ -3,27 +3,23 @@ package family.dd.DDHomeKits.member.handler;
 import family.dd.DDHomeKits.definition.ResponseCode;
 import family.dd.DDHomeKits.entity.HandleResult;
 import family.dd.DDHomeKits.entity.UserInfo;
+import family.dd.DDHomeKits.member.FamilyMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class LoginRequestHandler extends LoginHandler {
-    @Override
-    public HandleResult handle(UserInfo user) {
-        /**
-         * Handle password inputted by front user
-         */
-        PasswordHandler pwdHandler = PasswordHandlerFactory.getInstance();
-        HandleResult pwdHandleResult = pwdHandler.handle(user);
-        if (!pwdHandleResult.getCode().equals(ResponseCode.SUCCESS)) {
-            return new HandleResult(ResponseCode.SERVER_ERROR, "Login Failed! Detail : " + pwdHandleResult.getMessage());
-        }
-        String handledPassword = pwdHandleResult.getMessage();
-        List<UserInfo> users = familyMemberRepository.getUserInfo(user.getUsername(), handledPassword);
+import static family.dd.DDHomeKits.util.CommonUtil.isNull;
 
-        if (users.size()!=1){
-            return new HandleResult(ResponseCode.REQUEST_UNAUTHORIZED, "Invalid account or password");
-        }else {
-            return next.handle(users.get(0));
-        }
+public class LoginRequestHandler extends LoginHandler {
+    private FamilyMemberRepository repository = new FamilyMemberRepository();
+    @Override
+    public HandleResult handle(UserInfo familyMember) {
+        return next.handle(transField(familyMember));
+    }
+
+    UserInfo transField(UserInfo familyMember){
+        return familyMember;
     }
 }
