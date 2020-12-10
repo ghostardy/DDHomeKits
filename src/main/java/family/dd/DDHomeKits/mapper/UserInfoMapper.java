@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+/**
+ * Managed by mybatis
+ */
 @Mapper
 public interface UserInfoMapper {
     @Select("Select userId," +
@@ -25,6 +28,25 @@ public interface UserInfoMapper {
             @Result(property="signUpDate", column="signUpDate")
     })
     List<UserInfo> findUserByUserid(int userId);
+
+    @Select("Select userId," +
+            "username," +
+            "nickName," +
+            "status," +
+            "authority," +
+            "extraInfo," +
+            "signUpDate" +
+            " from UserInfo where username=#{username}")
+    @Results({
+            @Result(property="userId", column="userId"),
+            @Result(property="username", column="username"),
+            @Result(property="nickName", column="nickName"),
+            @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.mapper.UserStatusTypeHandler.class),
+            @Result(property="authority", column="authority"),
+            @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.mapper.UserExtraInfoTypeHandler.class),
+            @Result(property="signUpDate", column="signUpDate")
+    })
+    List<UserInfo> findUserByUsername(@Param("username") String username);
 
     @Select("Select userId," +
             "username," +
