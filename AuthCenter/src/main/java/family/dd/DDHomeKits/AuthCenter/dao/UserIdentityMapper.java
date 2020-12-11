@@ -8,7 +8,7 @@ import java.util.List;
  * Managed by mybatis
  */
 @Mapper
-public interface UserInfoMapper {
+public interface UserIdentityMapper {
     @Select("Select userId," +
             "username," +
             "nickName," +
@@ -16,7 +16,7 @@ public interface UserInfoMapper {
             "authority," +
             "extraInfo," +
             "signUpDate" +
-            " from IdentificationPO where userId=#{userId}")
+            " from UserIdentityPO where userId=#{userId}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -24,7 +24,7 @@ public interface UserInfoMapper {
             @Result(property="authority", column="authority"),
             @Result(property="signUpDate", column="signUpDate")
     })
-    List<IdentificationPO> findUserByUserid(int userId);
+    List<UserIdentityPO> findByUserid(int userId);
 
     @Select("Select userId," +
             "username," +
@@ -33,7 +33,7 @@ public interface UserInfoMapper {
             "authority," +
             "extraInfo," +
             "signUpDate" +
-            " from IdentificationPO where username=#{username}")
+            " from UserIdentityPO where username=#{username}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -41,7 +41,7 @@ public interface UserInfoMapper {
             @Result(property="authority", column="authority"),
             @Result(property="signUpDate", column="signUpDate")
     })
-    List<IdentificationPO> findUserByUsername(@Param("username") String username);
+    List<UserIdentityPO> findByUsername(String username);
 
     @Select("Select userId," +
             "username," +
@@ -50,7 +50,7 @@ public interface UserInfoMapper {
             "authority," +
             "extraInfo," +
             "signUpDate" +
-            " from IdentificationPO where username=#{username} and password=#{password}")
+            " from UserIdentityPO where username=#{username} and password=#{password}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -58,9 +58,9 @@ public interface UserInfoMapper {
             @Result(property="authority", column="authority"),
             @Result(property="signUpDate", column="signUpDate")
     })
-    List<IdentificationPO> findUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+    List<UserIdentityPO> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
-    @Insert("Insert into IdentificationPO(username," +
+    @Insert("Insert into UserIdentityPO(username," +
             "password," +
             "status," +
             "authority," +
@@ -69,8 +69,8 @@ public interface UserInfoMapper {
             "#{status,typeHandler=family.dd.DDHomeKits.family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler}," +
             "#{authority}," +
             "#{signUpDate})")
-    void addUser(IdentificationPO userInfo);
+    void add(UserIdentityPO userIdentity);
 
-    @Delete("Delete from IdentificationPO where username = #{username}")
-    void rmvUser(IdentificationPO userInfo);
+    @Delete("Delete from UserIdentityPO where username = #{username}")
+    void removeByUsername(String username);
 }

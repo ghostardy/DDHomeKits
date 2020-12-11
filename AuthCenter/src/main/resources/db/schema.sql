@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Identification
+CREATE TABLE IF NOT EXISTS UserIdentity
 (
     userId int PRIMARY KEY auto_increment,
     username varchar (50),

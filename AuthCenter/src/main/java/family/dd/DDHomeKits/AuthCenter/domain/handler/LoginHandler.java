@@ -1,7 +1,7 @@
 package family.dd.DDHomeKits.AuthCenter.domain.handler;
 
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
-import family.dd.DDHomeKits.AuthCenter.dao.IdentificationPO;
+import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
 
 public abstract class LoginHandler {
     protected LoginHandler next;
@@ -11,5 +11,5 @@ public abstract class LoginHandler {
     protected LoginHandler getNext(){
         return next;
     }
-    public abstract HandleResult handle(IdentificationPO user);
+    public abstract HandleResult handle(UserIdentityPO user);
 }

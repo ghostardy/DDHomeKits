@@ -1,8 +1,9 @@
 package family.dd.DDHomeKits.AuthCenter.domain.handler;
 
-import family.dd.DDHomeKits.AuthCenter.dao.IdentificationPO;
+import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
 import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertNotEquals;
@@ -12,15 +13,18 @@ class PasswordHandlerTest {
     @Test
     void handle() {
         PasswordHandler handler = PasswordHandlerFactory.getInstance();
-        IdentificationPO userInfo1 = new IdentificationPO("username", "password");
-        IdentificationPO userInfo2 = new IdentificationPO("username1", "password");
-        HandleResult result1 = handler.handle(userInfo1);
-        HandleResult result2 = handler.handle(userInfo2);
-        HandleResult result3 = handler.handle(userInfo2);
-        assertEquals(result1.getCode(), ResponseCode.SUCCESS);
-        assertEquals(result2.getCode(), ResponseCode.SUCCESS);
-        assertEquals(result3.getCode(), ResponseCode.SUCCESS);
-        assertNotEquals(result1.getMessage(), result2.getMessage());
-        assertEquals(result2.getMessage(), result3.getMessage());
+        String username1 = "username1";
+        String password1 = "password1";
+        String username2 = "username2";
+        String password2 = "password1";
+        try {
+            String result1 = handler.handle(username1, password1);
+            String result2 = handler.handle(username2, password2);
+            String result3 = handler.handle(username2, password2);
+            assertNotEquals(result1, result2);
+            assertEquals(result2, result3);
+        }catch (Exception e){
+            Assert.fail();
+        }
     }
 }

@@ -1,10 +1,7 @@
 package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
-import family.dd.DDHomeKits.AuthCenter.dao.IdentificationPO;
-import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
-import family.dd.DDHomeKits.AuthCenter.domain.FamilyMember;
-import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
+import family.dd.DDHomeKits.AuthCenter.domain.User;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AuthCenterApplication.class)
-class FamilyMemberTest {
+class UserTest {
     @Autowired
-    FamilyMember familyMember;
+    User user;
     @Test
     void signUp() {
 //        String username = "TestNewFamilyMember_ShouldBeDeleted";
 //        String password = "TestNewFamilyMember_ShouldBeDeleted";
-//        IdentificationPO newUser = new IdentificationPO(username, password);
+//        UserIdentityPO newUser = new UserIdentityPO(username, password);
 //        familyMember.getRepository().rmvUserInfo(newUser);
 //
 //        HandleResult signUpResult = familyMember.singUp(newUser);
@@ -34,7 +31,7 @@ class FamilyMemberTest {
 //        HandleResult loginResult = familyMember.login(newUser);
 //
 //        System.out.println(loginResult.getCode() + loginResult.getMessage());
-//        IdentificationPO fakeUser = new IdentificationPO(newUser);
+//        UserIdentityPO fakeUser = new UserIdentityPO(newUser);
 //        fakeUser.setPassword("FakePassword");
 //        loginResult = familyMember.login(fakeUser);
 //        System.out.println(loginResult.getCode() + loginResult.getMessage());

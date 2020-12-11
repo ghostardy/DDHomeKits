@@ -1,9 +1,9 @@
 package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
+import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
 import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
-import family.dd.DDHomeKits.AuthCenter.dao.FamilyMemberRepository;
-import family.dd.DDHomeKits.AuthCenter.dao.IdentificationPO;
+import family.dd.DDHomeKits.AuthCenter.dao.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AuthCenterApplication.class)
-class FamilyMemberRepositoryTest {
+class UserRepositoryTest {
     @Autowired
-    FamilyMemberRepository repository;
+    UserRepository repository;
 
     @Test
     void getUserInfo() {
@@ -30,21 +30,21 @@ class FamilyMemberRepositoryTest {
         final long testAuthority = 1610612751L;
         final String testNickName = "TesterNickNameAAAAAA123456789012345678901234567890";
         final UserStatus testUserStatus = UserStatus.FREEZE_UP;
-        IdentificationPO userInfo = new IdentificationPO(testUsername, testPassword);
+        UserIdentityPO userInfo = new UserIdentityPO(testUsername, testPassword);
         userInfo.setAuthority(testAuthority);
         userInfo.setStatus(testUserStatus);
         userInfo.setUserId(999); //no use
         /**
          * Delete test data if exists
          */
-        repository.rmvUserInfo(userInfo);
-        List<IdentificationPO> users = repository.getUserInfo(testUsername, testPassword);
+        repository.removeByUsername(testUsername);
+        List<UserIdentityPO> users = repository.find(testUsername, testPassword);
         assertEquals(0, users.size());
         /**
          * Test addUserInfo & getUserInfo(username)
          */
-        repository.addUserInfo(userInfo);
-        users = repository.getUserInfo(testUsername, testPassword);
+        repository.add(userInfo);
+        users = repository.find(testUsername, testPassword);
         assertEquals(1, users.size());
         assertEquals(testAuthority, users.get(0).getAuthority());
         assertEquals(1610612751L, users.get(0).getAuthority());
@@ -53,7 +53,7 @@ class FamilyMemberRepositoryTest {
         /**
          * Test getUserInfo(userId)
          */
-        users = repository.getUserInfo(users.get(0).getUserId());
+        users = repository.find(users.get(0).getUserId());
         assertEquals(1, users.size());
         assertEquals(testAuthority, users.get(0).getAuthority());
         assertEquals(1610612751L, users.get(0).getAuthority());
@@ -62,8 +62,8 @@ class FamilyMemberRepositoryTest {
         /**
          * Clear Test Data
          */
-        repository.rmvUserInfo(userInfo);
-        users = repository.getUserInfo(testUsername, testPassword);
+        repository.removeByUsername(testUsername);
+        users = repository.find(testUsername, testPassword);
         assertEquals(0, users.size());
     }
 }

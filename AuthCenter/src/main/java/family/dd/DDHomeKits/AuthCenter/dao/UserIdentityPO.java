@@ -5,10 +5,10 @@ import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
 import java.sql.Timestamp;
 
 /**
- * Entity of Database, IdentificationPO table
+ * Entity of Database, UserIdentityPO table
  * UserStatus need to TransType to int
  */
-public class IdentificationPO {
+public class UserIdentityPO {
      private int userId;
      private String username;
      private String password;
@@ -16,17 +16,17 @@ public class IdentificationPO {
      private long authority;
      private Timestamp signUpDate;
 
-     public IdentificationPO() {
+     public UserIdentityPO() {
           this("", "");
      }
-     public IdentificationPO(String username, String password) {
+     public UserIdentityPO(String username, String password) {
           this.username = username;
           this.password = password;
           this.status = UserStatus.INITIALIZED;
           this.authority = 0L;
           this.signUpDate = new Timestamp(System.currentTimeMillis());
      }
-     public IdentificationPO(IdentificationPO userInfo){
+     public UserIdentityPO(UserIdentityPO userInfo){
           this.username = userInfo.getUsername();
           this.password = userInfo.getPassword();
           this.status = userInfo.getStatus();
