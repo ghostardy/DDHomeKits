@@ -5,6 +5,9 @@ import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class PasswordHandlerTest {
     @Test
     void handle() {

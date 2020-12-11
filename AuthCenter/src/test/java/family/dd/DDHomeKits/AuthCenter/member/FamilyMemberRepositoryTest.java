@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.AuthCenter.member;
 
-import family.dd.DDHomeKits.AuthCenter.AuthenticationCenterApplication;
+import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
 import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
 import family.dd.DDHomeKits.AuthCenter.dao.FamilyMemberRepository;
 import family.dd.DDHomeKits.AuthCenter.dao.IdentificationPO;
@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = AuthenticationCenterApplication.class)
+@SpringBootTest(classes = AuthCenterApplication.class)
 class FamilyMemberRepositoryTest {
     @Autowired
     FamilyMemberRepository repository;
@@ -32,7 +32,6 @@ class FamilyMemberRepositoryTest {
         final UserStatus testUserStatus = UserStatus.FREEZE_UP;
         IdentificationPO userInfo = new IdentificationPO(testUsername, testPassword);
         userInfo.setAuthority(testAuthority);
-        userInfo.setNickName(testNickName);
         userInfo.setStatus(testUserStatus);
         userInfo.setUserId(999); //no use
         /**
@@ -49,7 +48,6 @@ class FamilyMemberRepositoryTest {
         assertEquals(1, users.size());
         assertEquals(testAuthority, users.get(0).getAuthority());
         assertEquals(1610612751L, users.get(0).getAuthority());
-        assertEquals(testNickName, users.get(0).getNickName());
         assertEquals(testUserStatus, users.get(0).getStatus());
         assertEquals("", users.get(0).getPassword());
         /**
@@ -59,7 +57,6 @@ class FamilyMemberRepositoryTest {
         assertEquals(1, users.size());
         assertEquals(testAuthority, users.get(0).getAuthority());
         assertEquals(1610612751L, users.get(0).getAuthority());
-        assertEquals(testNickName, users.get(0).getNickName());
         assertEquals(testUserStatus, users.get(0).getStatus());
         assertEquals("", users.get(0).getPassword());
         /**

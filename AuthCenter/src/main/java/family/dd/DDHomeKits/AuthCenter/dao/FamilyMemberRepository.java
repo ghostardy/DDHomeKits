@@ -48,7 +48,7 @@ public class FamilyMemberRepository {
      * For user management
      * @param userInfo
      */
-    void addUserInfo(IdentificationPO userInfo){
+    public void addUserInfo(IdentificationPO userInfo){
         mapper.addUser(userInfo);
     }
 
@@ -56,7 +56,7 @@ public class FamilyMemberRepository {
      * For test use
      * @param userInfo
      */
-    void rmvUserInfo(IdentificationPO userInfo){
+    public void rmvUserInfo(IdentificationPO userInfo){
         mapper.rmvUser(userInfo);
     }
 

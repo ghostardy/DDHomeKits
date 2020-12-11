@@ -20,10 +20,8 @@ public interface UserInfoMapper {
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
-            @Result(property="extraInfo", column="extraInfo", typeHandler = family.dd.DDHomeKits.AuthCenter.dao.UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
     List<IdentificationPO> findUserByUserid(int userId);
@@ -39,10 +37,8 @@ public interface UserInfoMapper {
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
-            @Result(property="extraInfo", column="extraInfo", typeHandler = UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
     List<IdentificationPO> findUserByUsername(@Param("username") String username);
@@ -58,26 +54,20 @@ public interface UserInfoMapper {
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="nickName", column="nickName"),
             @Result(property="status", column="status", typeHandler = UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
-            @Result(property="extraInfo", column="extraInfo", typeHandler = UserExtraInfoTypeHandler.class),
             @Result(property="signUpDate", column="signUpDate")
     })
     List<IdentificationPO> findUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     @Insert("Insert into IdentificationPO(username," +
             "password," +
-            "nickName," +
             "status," +
             "authority," +
-            "extraInfo," +
             "signUpDate) values(#{username}," +
             "#{password}," +
-            "#{nickName}," +
-            "#{status,typeHandler=family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler}," +
+            "#{status,typeHandler=family.dd.DDHomeKits.family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler}," +
             "#{authority}," +
-            "#{extraInfo, typeHandler=family.dd.DDHomeKits.AuthCenter.dao.UserExtraInfoTypeHandler}," +
             "#{signUpDate})")
     void addUser(IdentificationPO userInfo);
 

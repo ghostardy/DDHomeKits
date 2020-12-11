@@ -88,7 +88,7 @@ public class FamilyMember {
          * Store new user info into database
          */
         try {
-            repository.addUserInfo(newUser);
+            //repository.addUserInfo(newUser);
             return new HandleResult(ResponseCode.SUCCESS, "Thanks for Signing Up");
         }catch (Exception e) {
             e.printStackTrace();

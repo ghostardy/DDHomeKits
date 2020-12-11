@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DDHomeKits" />
+        <module name="AuthCenter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DDHomeKits" target="1.8" />
+      <module name="AuthCenter" target="1.8" />
+      <module name="DDHomeKits" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

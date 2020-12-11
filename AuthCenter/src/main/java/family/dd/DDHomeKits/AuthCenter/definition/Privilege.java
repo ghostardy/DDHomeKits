@@ -9,11 +9,9 @@ import static family.dd.DDHomeKits.AuthCenter.util.CommonUtil.isNull;
  */
 public enum Privilege {
     LOG_IN(1, "Log in"),
-    USER_MANAGE(2, "Manage Roles and Members"),
-    METER_VIEW(3,"View data collected by meters"),
-    METER_REPORT(4, "Upload meter numbers"),
-    SYSTEM_ADMIN(30, "Manage system"),
-    EXTENSION(31, "Reserved field for extension");
+    USER_MANAGE(2, "Manage Users"),
+    SYSTEM_ADMIN(30, "Manage System"),
+    EXTENSION(31, "Reserved field");
 
     /**
      *  Value scope 1~31
