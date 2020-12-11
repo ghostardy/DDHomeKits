@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/main/java/family/dd/DDHomeKits/AuthCenter/AuthCenter.iml" filepath="$PROJECT_DIR$/src/main/java/family/dd/DDHomeKits/AuthCenter/AuthCenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/DDHomeKits.iml" filepath="$PROJECT_DIR$/DDHomeKits.iml" />
     </modules>
   </component>
