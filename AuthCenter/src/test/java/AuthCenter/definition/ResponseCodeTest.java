@@ -2,8 +2,6 @@ package family.dd.DDHomeKits.AuthCenter.definition;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ResponseCodeTest {
 
     @Test

@@ -5,9 +5,7 @@ import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class PasswordSimpleSaltHandlerTest {
+class PasswordSHA256HandlerTest {
 
     @Test
     void handle() {
@@ -20,9 +18,9 @@ class PasswordSimpleSaltHandlerTest {
         /**
          * Execute
          */
-        PasswordHandler handler = new PasswordSimpleSaltHandler();
+        PasswordHandler handler = new PasswordSHA256Handler();
         HandleResult result = handler.handle(userInfo);
         assertEquals(ResponseCode.SUCCESS, result.getCode());
-        assertEquals(userInfo.getUsername()+userInfo.getPassword()+PasswordSimpleSaltHandler.getSalt(), result.getMessage());
+        assertEquals("1035343-6186217241888276338763-38-1103154122-71-65431159119-106-2-746126", result.getMessage());
     }
 }

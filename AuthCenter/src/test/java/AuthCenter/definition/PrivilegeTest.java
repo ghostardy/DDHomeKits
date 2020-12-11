@@ -3,7 +3,6 @@ package family.dd.DDHomeKits.AuthCenter.definition;
 import org.junit.jupiter.api.Test;
 
 import static family.dd.DDHomeKits.AuthCenter.definition.Privilege.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PrivilegeTest {
 

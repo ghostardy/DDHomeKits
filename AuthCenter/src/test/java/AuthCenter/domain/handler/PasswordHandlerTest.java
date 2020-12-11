@@ -5,8 +5,6 @@ import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PasswordHandlerTest {
     @Test
     void handle() {
