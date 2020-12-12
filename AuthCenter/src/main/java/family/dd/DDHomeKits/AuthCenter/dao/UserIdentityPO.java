@@ -1,5 +1,6 @@
 package family.dd.DDHomeKits.AuthCenter.dao;
 
+import com.google.gson.Gson;
 import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
 
 import java.sql.Timestamp;

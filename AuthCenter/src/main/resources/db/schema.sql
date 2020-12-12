@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS UserIdentity
     authority bigint,
     signUpDate timestamp
 );
-GRANT ALL ON Identification TO sa;
+GRANT ALL ON UserIdentity TO sa;

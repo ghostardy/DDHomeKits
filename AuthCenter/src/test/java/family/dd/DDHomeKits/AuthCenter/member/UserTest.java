@@ -2,11 +2,14 @@ package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
 import family.dd.DDHomeKits.AuthCenter.domain.User;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = AuthCenterApplication.class)
@@ -37,5 +40,14 @@ class UserTest {
 //        System.out.println(loginResult.getCode() + loginResult.getMessage());
 //
 //        familyMember.getRepository().rmvUserInfo(newUser);
+    }
+
+    @Test
+    void transPassword() {
+        try {
+            assertEquals("94-12572-7611854-844-71107-62-1340-2771-73-29-378-43125-11211-46-91-122108-100-127-84-7635", user.transPassword("username", "password"));
+        }catch (Exception e){
+            Assert.fail();
+        }
     }
 }

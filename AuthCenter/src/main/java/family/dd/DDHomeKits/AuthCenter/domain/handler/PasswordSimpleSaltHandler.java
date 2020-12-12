@@ -7,7 +7,11 @@ public class PasswordSimpleSaltHandler extends PasswordHandler{
 
     @Override
     public String handle(String source, String...seed) throws Exception{
-        String target = seed + source + SIMPLE_SALT;
+        String key = "";
+        if (seed.length > 0) {
+            key = seed[0];
+        }
+        String target = key + source + SIMPLE_SALT;
         if (isNull(next)) {
             return target;
         }else {

@@ -11,12 +11,10 @@ import java.util.List;
 public interface UserIdentityMapper {
     @Select("Select userId," +
             "username," +
-            "nickName," +
             "status," +
             "authority," +
-            "extraInfo," +
             "signUpDate" +
-            " from UserIdentityPO where userId=#{userId}")
+            " from UserIdentity where userId=#{userId}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -28,12 +26,10 @@ public interface UserIdentityMapper {
 
     @Select("Select userId," +
             "username," +
-            "nickName," +
             "status," +
             "authority," +
-            "extraInfo," +
             "signUpDate" +
-            " from UserIdentityPO where username=#{username}")
+            " from UserIdentity where username=#{username}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -45,12 +41,10 @@ public interface UserIdentityMapper {
 
     @Select("Select userId," +
             "username," +
-            "nickName," +
             "status," +
             "authority," +
-            "extraInfo," +
             "signUpDate" +
-            " from UserIdentityPO where username=#{username} and password=#{password}")
+            " from UserIdentity where username=#{username} and password=#{password}")
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
@@ -60,17 +54,17 @@ public interface UserIdentityMapper {
     })
     List<UserIdentityPO> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
-    @Insert("Insert into UserIdentityPO(username," +
+    @Insert("Insert into UserIdentity(username," +
             "password," +
             "status," +
             "authority," +
             "signUpDate) values(#{username}," +
             "#{password}," +
-            "#{status,typeHandler=family.dd.DDHomeKits.family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler}," +
+            "#{status,typeHandler=family.dd.DDHomeKits.AuthCenter.dao.UserStatusTypeHandler}," +
             "#{authority}," +
             "#{signUpDate})")
     void add(UserIdentityPO userIdentity);
 
-    @Delete("Delete from UserIdentityPO where username = #{username}")
+    @Delete("Delete from UserIdentity where username = #{username}")
     void removeByUsername(String username);
 }

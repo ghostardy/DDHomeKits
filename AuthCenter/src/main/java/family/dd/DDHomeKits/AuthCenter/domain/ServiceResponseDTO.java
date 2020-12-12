@@ -1,11 +1,13 @@
 package family.dd.DDHomeKits.AuthCenter.domain;
 
+import com.google.gson.Gson;
 import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 
-public class ServiceResponse {
+public class ServiceResponseDTO {
     private int code= ResponseCode.HANDLING.getCodeValue();
     private String message="handling";
     private String data="{}";
+    private Gson gson;
 
     public int getCode() {
         return code;
@@ -32,6 +34,6 @@ public class ServiceResponse {
     }
 
     public String toJson(){
-        return "{\"code\":\""+ code +",\"message\":\""+message+"\",\"data\":\""+data+"\"}";
+        return gson.toJson(this);
     }
 }
