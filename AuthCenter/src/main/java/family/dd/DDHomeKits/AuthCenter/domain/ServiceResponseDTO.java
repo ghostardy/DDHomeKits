@@ -9,6 +9,13 @@ public class ServiceResponseDTO {
     private String data="{}";
     private Gson gson;
 
+    public ServiceResponseDTO() {}
+    public ServiceResponseDTO(ResponseCode responseCode, String message, Object data){
+        this.code = responseCode.getCodeValue();
+        this.message = message;
+        this.data = gson.toJson(data);
+    }
+
     public int getCode() {
         return code;
     }
