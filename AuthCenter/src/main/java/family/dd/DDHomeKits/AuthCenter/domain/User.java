@@ -22,7 +22,6 @@ import java.util.List;
 @Component
 @Scope("prototype")
 public class User {
-    //private UserRepository repository;
     private int userId;
     private String username;
     private UserStatus status;
@@ -53,12 +52,10 @@ public class User {
         return new HandleResult(ResponseCode.SUCCESS, "Family member login status is recovered");
     }
 
-
-
-    //@Autowired
-    //public void setRepository(UserRepository repository) {
-        //this.repository = repository;
-    //}
+    public User login(){
+        this.sessionId = "xxxxx";
+        return this;
+    }
 
     public int getUserId() {
         return userId;
