@@ -3,6 +3,7 @@ package family.dd.DDHomeKits.AuthCenter.domain;
 import com.google.gson.Gson;
 import family.dd.DDHomeKits.AuthCenter.dao.UserRepository;
 import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
+import family.dd.DDHomeKits.AuthCenter.definition.Privilege;
 import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.dao.HandleResult;
 import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
@@ -28,16 +29,12 @@ public class User {
     private long authority;
     private Timestamp signUpDate;
     private String sessionId;
-
     public String getSessionId() {
         return sessionId;
     }
-
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
-
-    private Gson gson = new Gson();
 
     public User(){}
     public User(UserIdentityPO userPO){
