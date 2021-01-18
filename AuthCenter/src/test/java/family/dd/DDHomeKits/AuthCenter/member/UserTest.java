@@ -2,6 +2,7 @@ package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
 import family.dd.DDHomeKits.AuthCenter.domain.User;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -45,7 +46,8 @@ class UserTest {
     @Test
     void transPassword() {
         try {
-            assertEquals("94-12572-7611854-844-71107-62-1340-2771-73-29-378-43125-11211-46-91-122108-100-127-84-7635", user.transPassword("username", "password"));
+            UserAuthentication ua = new UserAuthentication();
+            assertEquals("94-12572-7611854-844-71107-62-1340-2771-73-29-378-43125-11211-46-91-122108-100-127-84-7635", ua.transPassword("username", "password"));
         }catch (Exception e){
             Assert.fail();
         }
