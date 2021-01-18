@@ -1,5 +1,7 @@
 package family.dd.DDHomeKits.AuthCenter.domain;
 
+import family.dd.DDHomeKits.AuthCenter.definition.Privilege;
+import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
 import family.dd.DDHomeKits.AuthCenter.domain.handler.PasswordHandler;
 import family.dd.DDHomeKits.AuthCenter.domain.handler.PasswordHandlerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +15,14 @@ public class UserAuthentication {
     private Authenticator authenticator;
     private UserManager userManager;
     private User user;
+
     public User signUp(User newUserInfo, String userInputPassword) throws HandlePasswordException{
         String encryptedPassword = transPassword(newUserInfo.getUsername(), userInputPassword);
         return userManager.addUser(newUserInfo, encryptedPassword);
     }
-    public User login(String username, String userInputPassword) throws HandlePasswordException {
+    public User authenticate(String username, String userInputPassword) throws HandlePasswordException {
         String encryptedPassword = transPassword(username, userInputPassword);
-        User user = authenticator.authenticate(username, encryptedPassword);
-        return user.login();
+        return authenticator.authenticate(username, encryptedPassword);
     }
 
 
@@ -39,6 +41,13 @@ public class UserAuthentication {
             throw new HandlePasswordException("Server ERROR, Login Failed!");
         }
     }
+    public boolean canLogin(){
+        return authenticator.hasPermission(user, Privilege.LOG_IN);
+    }
+    public boolean isPrepared() {
+        return UserStatus.PREPARED.equals(user.getStatus());
+    }
+
     @Autowired
     public void setAuthenticator(Authenticator authenticator) {
         this.authenticator = authenticator;
