@@ -4,23 +4,23 @@ import com.google.gson.Gson;
 import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 
 public class ServiceResponseDTO {
-    private int code= ResponseCode.HANDLING.getCodeValue();
+    private ResponseCode code= ResponseCode.HANDLING;
     private String message="handling";
     private String data="{}";
     private Gson gson;
 
     public ServiceResponseDTO() {}
     public ServiceResponseDTO(ResponseCode responseCode, String message, Object data){
-        this.code = responseCode.getCodeValue();
+        this.code = responseCode;
         this.message = message;
         this.data = gson.toJson(data);
     }
 
-    public int getCode() {
+    public ResponseCode getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(ResponseCode code) {
         this.code = code;
     }
 
