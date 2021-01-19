@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import static family.dd.DDHomeKits.AuthCenter.util.CommonUtil.isNull;
@@ -25,24 +26,29 @@ public class FamilyMemberController {
     }
 
     @PostMapping("/login")
-    public String login(){
-        String username = "username";
-        String password = "password";
+    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password){
+        ServiceResponseDTO resp = new ServiceResponseDTO();
         try {
             User user = userAuthentication.authenticate(username, password);
             if (isNull(user)){
-                return new ServiceResponseDTO(ResponseCode.REQUEST_UNAUTHORIZED, "Authenticate Failed! Invalid username or password", null).toJson();
+                resp.setCode(ResponseCode.REQUEST_UNAUTHORIZED);
+                resp.setMessage("Authenticate Failed! Invalid username or password");
             }else if (!userAuthentication.isPrepared()) {
-                return new ServiceResponseDTO(ResponseCode.REQUEST_FORBIDDEN, "User is not prepared now, please try again later", null).toJson();
+                resp.setCode(ResponseCode.REQUEST_FORBIDDEN);
+                resp.setMessage("User is not prepared now, please try again later");
             }else if (!userAuthentication.canLogin()) {
-                return new ServiceResponseDTO(ResponseCode.REQUEST_UNAUTHORIZED, "Not allowed to log in now, please try again later", null).toJson();
+                resp.setCode(ResponseCode.REQUEST_UNAUTHORIZED);
+                resp.setMessage("Not allowed to log in now, please try again later");
             }else {
-                return new ServiceResponseDTO(ResponseCode.SUCCESS, "SUCCESS", user).toJson();
+                resp.setCode(ResponseCode.SUCCESS);
+                resp.setMessage("SUCCESS");
+                resp.setData(gson.toJson(user));
             }
         }catch (Exception e) {
-            return new ServiceResponseDTO(ResponseCode.SERVER_ERROR, "Server error, please try again later", null).toJson();
+            resp.setCode(ResponseCode.SERVER_ERROR);
+            resp.setMessage("Server error, please try again later");
         }
-
+        return gson.toJson(resp);
     }
     @GetMapping("/signUp")
     public String signUp(){
