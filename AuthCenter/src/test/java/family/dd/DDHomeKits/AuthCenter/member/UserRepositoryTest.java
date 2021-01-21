@@ -1,9 +1,9 @@
 package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
-import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
-import family.dd.DDHomeKits.AuthCenter.definition.UserStatus;
-import family.dd.DDHomeKits.AuthCenter.dao.UserRepository;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.UserIdentityPO;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.UserStatus;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

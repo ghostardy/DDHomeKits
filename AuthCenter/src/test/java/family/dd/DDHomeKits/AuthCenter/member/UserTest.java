@@ -1,8 +1,8 @@
 package family.dd.DDHomeKits.AuthCenter.member;
 
 import family.dd.DDHomeKits.AuthCenter.AuthCenterApplication;
-import family.dd.DDHomeKits.AuthCenter.domain.User;
-import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.User;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.UserAuthentication;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
