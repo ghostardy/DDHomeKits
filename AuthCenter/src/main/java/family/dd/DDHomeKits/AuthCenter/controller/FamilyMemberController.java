@@ -1,7 +1,6 @@
 package family.dd.DDHomeKits.AuthCenter.controller;
 
 import com.google.gson.Gson;
-import family.dd.DDHomeKits.AuthCenter.dao.UserIdentityPO;
 import family.dd.DDHomeKits.AuthCenter.definition.ResponseCode;
 import family.dd.DDHomeKits.AuthCenter.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +41,13 @@ public class FamilyMemberController {
             }else {
                 resp.setCode(ResponseCode.SUCCESS);
                 resp.setMessage("SUCCESS");
-                resp.setData(gson.toJson(user));
+                resp.setData(user);
             }
         }catch (Exception e) {
             resp.setCode(ResponseCode.SERVER_ERROR);
             resp.setMessage("Server error, please try again later");
         }
-        return gson.toJson(resp);
+        return resp.toJson();
     }
     @GetMapping("/signUp")
     public String signUp(){
