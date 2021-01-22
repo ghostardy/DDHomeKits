@@ -13,3 +13,6 @@ spring:
     password:
     initialization-mode: always
     schema: classpath:db/schema.sql
+  redis:
+    host: 127.0.0.1
+    port: 6379
