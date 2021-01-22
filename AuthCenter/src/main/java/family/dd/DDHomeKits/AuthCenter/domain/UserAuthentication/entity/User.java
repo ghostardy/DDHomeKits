@@ -5,6 +5,7 @@ import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.Hand
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 
 /**
@@ -39,9 +40,8 @@ public class User {
         return new HandleResult(ResponseCode.SUCCESS, "Family member login status is recovered");
     }
 
-    public User login(){
-        this.sessionId = "xxxxx";
-        return this;
+    public void login(){
+        System.out.println("logged in");
     }
 
     public int getUserId() {
