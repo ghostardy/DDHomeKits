@@ -10,6 +10,8 @@ import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.handler.
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * AggregateRoot
  */
@@ -23,11 +25,22 @@ public class UserAuthentication {
         String encryptedPassword = transPassword(newUserInfo.getUsername(), userInputPassword);
         return userManager.addUser(newUserInfo, encryptedPassword);
     }
+
     public User authenticate(String username, String userInputPassword) throws HandlePasswordException {
         String encryptedPassword = transPassword(username, userInputPassword);
-        return authenticator.authenticate(username, encryptedPassword);
+        user = authenticator.authenticate(username, encryptedPassword);
+        return user;
     }
 
+    public void login(HttpSession session){
+        session.setAttribute("userId", user.getUserId());
+        session.setAttribute("username", user.getUsername());
+        session.setAttribute("status", user.getStatus());
+        session.setAttribute("authority", user.getAuthority());
+        session.setAttribute("signUpDate", user.getSignUpDate());
+        user.setSessionId(session.getId());
+        user.login();
+    }
 
     /**
      * Handle password inputted by front user
