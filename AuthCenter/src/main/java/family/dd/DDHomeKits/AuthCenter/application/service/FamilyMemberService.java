@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 import static family.dd.DDHomeKits.AuthCenter.infrastructure.util.CommonUtil.isNull;
 
 @RestController
@@ -27,7 +29,7 @@ public class FamilyMemberService {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password){
+    public String login(HttpSession session, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password){
         ServiceResponseDTO resp = new ServiceResponseDTO();
         try {
             User user = userAuthentication.authenticate(username, password);
@@ -41,6 +43,7 @@ public class FamilyMemberService {
                 resp.setCode(ResponseCode.REQUEST_UNAUTHORIZED);
                 resp.setMessage("Not allowed to log in now, please try again later");
             }else {
+                userAuthentication.login(session);
                 resp.setCode(ResponseCode.SUCCESS);
                 resp.setMessage("SUCCESS");
                 resp.setData(user);
