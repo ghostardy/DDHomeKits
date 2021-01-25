@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AuthCenter/AuthCenter.iml" filepath="$PROJECT_DIR$/AuthCenter/AuthCenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/DDHomeKits.iml" filepath="$PROJECT_DIR$/DDHomeKits.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HomePage/HomePage.iml" filepath="$PROJECT_DIR$/HomePage/HomePage.iml" />
     </modules>
   </component>
 </project>

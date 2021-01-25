@@ -10,6 +10,7 @@
     <version>0.0.1</version>
     <modules>
         <module>AuthCenter</module>
+        <module>HomePage</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

@@ -5,7 +5,6 @@ import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.Hand
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 
 /**

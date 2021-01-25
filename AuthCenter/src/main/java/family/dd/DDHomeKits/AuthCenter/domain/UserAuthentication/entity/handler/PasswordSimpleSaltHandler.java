@@ -1,6 +1,6 @@
 package family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.handler;
 
-import static family.dd.DDHomeKits.AuthCenter.infrastructure.util.CommonUtil.isNull;
+import family.dd.DDHomeKits.AuthCenter.infrastructure.util.CommonUtil;
 
 public class PasswordSimpleSaltHandler extends PasswordHandler{
     private static final String SIMPLE_SALT = "My-name-is-link-not-Zelda-also-not-Luigi!";
@@ -12,7 +12,7 @@ public class PasswordSimpleSaltHandler extends PasswordHandler{
             key = seed[0];
         }
         String target = key + source + SIMPLE_SALT;
-        if (isNull(next)) {
+        if (CommonUtil.isNull(next)) {
             return target;
         }else {
             return next.handle(target, seed);

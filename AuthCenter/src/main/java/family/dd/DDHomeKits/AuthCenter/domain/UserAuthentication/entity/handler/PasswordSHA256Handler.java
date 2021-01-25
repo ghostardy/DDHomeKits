@@ -1,8 +1,9 @@
 package family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.handler;
 
+import family.dd.DDHomeKits.AuthCenter.infrastructure.util.CommonUtil;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import static family.dd.DDHomeKits.AuthCenter.infrastructure.util.CommonUtil.isNull;
 
 /**
  * Handle user password by sha256
@@ -12,7 +13,7 @@ public class PasswordSHA256Handler extends PasswordHandler{
     @Override
     public String handle(String source, String...seed) throws Exception{
         String digest = sha256digest(source);
-        if (isNull(next)){
+        if (CommonUtil.isNull(next)){
             return digest;
         }else {
             return next.handle(digest, seed);

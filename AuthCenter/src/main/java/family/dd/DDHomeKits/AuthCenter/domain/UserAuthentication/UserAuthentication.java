@@ -1,9 +1,9 @@
 package family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication;
 
-import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.Privilege;
-import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.UserStatus;
 import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.Authenticator;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.Privilege;
 import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.User;
+import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.UserStatus;
 import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.UserManager;
 import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.handler.PasswordHandler;
 import family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.entity.handler.PasswordHandlerFactory;

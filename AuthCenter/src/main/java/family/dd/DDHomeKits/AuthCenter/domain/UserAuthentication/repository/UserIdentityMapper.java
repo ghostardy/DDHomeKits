@@ -18,7 +18,7 @@ public interface UserIdentityMapper {
     @Results({
             @Result(property="userId", column="userId"),
             @Result(property="username", column="username"),
-            @Result(property="status", column="status", typeHandler = family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.UserStatusTypeHandler.class),
+            @Result(property="status", column="status", typeHandler = UserStatusTypeHandler.class),
             @Result(property="authority", column="authority"),
             @Result(property="signUpDate", column="signUpDate")
     })
@@ -60,7 +60,7 @@ public interface UserIdentityMapper {
             "authority," +
             "signUpDate) values(#{username}," +
             "#{password}," +
-            "#{status,typeHandler=family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.UserStatusTypeHandler}," +
+            "#{status,typeHandler=UserStatusTypeHandler}," +
             "#{authority}," +
             "#{signUpDate})")
     void add(UserIdentityPO userIdentity);
