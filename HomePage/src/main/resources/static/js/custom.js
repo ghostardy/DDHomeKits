@@ -739,7 +739,7 @@ jQuery(document).ready(function($)
 	if($.isFunction(features_tabs.featuresTabs))
 	{
 		features_tabs.featuresTabs();
-		features_tabs.wrap($('<div class="large_screen_only" />'));
+		//features_tabs.wrap($('<div class="large_screen_only" />'));
 	}
 });
 
