@@ -22,10 +22,10 @@
 		if(container.data('featurestabs-isbusy') && ! no_animation)
 			return;
 		
-		var all_tabs = container.find('.side_tab .features_tab');
-		var tabs_nav = container.find('td.tabs_nav');
-		
-		var to_show = container.find('.side_tab .features_tab[data-id="'+tab_id+'"]');
+		var all_tabs = container.find('.features_tab');
+		var tabs_nav = container.find('div.tabs_nav_small');
+
+		var to_show = container.find('.features_tab[data-id="'+tab_id+'"]');
 		var to_hide = all_tabs.not(to_show);
 		
 		var to_show_items = to_show.find('.service_entry');
@@ -34,7 +34,7 @@
 		var to_show_total_items = to_show_items.length;
 		var to_hide_total_items = to_hide_items.length;
 		
-		to_show_items.add(to_hide_items).css('position', 'relative');
+		//to_show_items.add(to_hide_items).css('position', 'relative');
 		
 		// Check If is current tab
 		if(container.data('featurestabs-currenttab') == tab_id)
@@ -106,8 +106,8 @@
 	{
 		var all_tabs = container.find('.side_tab .features_tab');
 		
-		var tabs_nav = container.find('td.tabs_nav');
-		var tab_links = container.find('td.tabs_nav a');
+		var tabs_nav = container.find('div.tabs_nav');
+		var tab_links = container.find('div.tabs_nav a');
 		
 		tab_links.each(function()
 		{
@@ -166,11 +166,14 @@
 		
 		var all_tabs = container.find('.side_tab .features_tab');
 		
-		var tabs_nav = container.find('td.tabs_nav').clone();
+		//var tabs_nav = container.find('td.tabs_nav').clone();
+		var tabs_nav = container.find('div.tabs_nav_small');
 		var tab_links = tabs_nav.find('a');
+		var send_message = container.find('div.send_message');
+
 		
 		
-		var new_tabs_nav = $('<div class="tabs_nav_small clearfix" />');
+		//var new_tabs_nav = $('<div class="tabs_nav_small clearfix" />');
 		
 		// Setup Mini Tabs
 		var active_tab_def = tab_links.filter('[class~=active]');
@@ -189,19 +192,19 @@
 			if(tab_links.length - 1 == i)
 				tab_link.addClass('last');
 			
-			new_tabs_nav.append(tab_link);
+			//new_tabs_nav.append(tab_link);
 			
-			var related_tabs = all_tabs.filter('[data-id="'+tab_id+'"]');
+			//var related_tabs = all_tabs.filter('[data-id="'+tab_id+'"]');
 			
-			var tab_group = $('<div class="features_tab" data-id="'+tab_id+'" />');
+			//var tab_group = $('<div class="features_tab" data-id="'+tab_id+'" />');
 			
 			// Add Tab Items
-			related_tabs.each(function(j)
-			{
-				var $cloned = $(this).clone();
-				
-				tab_group.append($cloned.find('.service_entry'));
-			});
+			// related_tabs.each(function(j)
+			// {
+			// 	var $cloned = $(this).clone();
+			//
+			// 	tab_group.append($cloned.find('.service_entry'));
+			// });
 			
 			// Hide Other Tabs (just one active)
 	
@@ -212,7 +215,7 @@
 			}
 			
 			// Add Tab Group
-			small_screen_env.append(tab_group);
+			//small_screen_env.append(tab_group);
 			
 			// Set Click Event for Tab Link
 			tab_link.click(function(ev)
@@ -221,19 +224,20 @@
 				
 				tab_links.removeClass('active');
 				tab_link.addClass('active');
+				send_message.removeClass('hidden');
 				
-				showMiniTab(small_screen_env, tab_id);
+				//showMiniTab(small_screen_env, tab_id);
 			});
 		});
 		
-		small_screen_env.prepend(new_tabs_nav);
+		//small_screen_env.prepend(new_tabs_nav);
 		
 		// Append After Features Tabs
-		container.after(small_screen_env);
+		//container.after(small_screen_env);
 		
 		
 		// Show Active Tab
-		showMiniTab(small_screen_env, active_tab_def.attr('rel'), true);
+		//showMiniTab(small_screen_env, active_tab_def.attr('rel'), true);
 	};
 	
 	$.fn.featuresTabs = function(options)
@@ -245,13 +249,14 @@
 			var container = $(this);
 			var instance = {};
 			
-			generateForSmallScreens(container);
-			setTabHeights(container);
+			//generateForSmallScreens(container);
+			//setTabHeights(container);
 			
-			var tab_links = container.find('td.tabs_nav a');
+			var tab_links = container.find('div.tabs_nav_small a');
 			
 			// Setup Tab Links
 			var total_tabs = tab_links.length;
+
 			var active_tab_def = tab_links.filter('[class~=active]');
 			
 			var has_active_tab = active_tab_def.length > 0;
@@ -290,13 +295,13 @@
 					tab_link.addClass('active');
 					
 					var tab_id = tab_link.attr('rel');
-					showTab(container, tab_id, tab_link.data('featurestabs-height'));
+					showTab(container, tab_id, tab_link.data('featurestabs-height'), true);
 				});
 			});
 			
 			
 			// Show Active Tab (At Start)
-			showTab(container, active_tab_def.attr('rel'), active_tab_def.data('featurestabs-height'), true);
+			//showTab(container, active_tab_def.attr('rel'), active_tab_def.data('featurestabs-height'), true);
 			
 			
 			container.data('featurestabsinstance', instance);
