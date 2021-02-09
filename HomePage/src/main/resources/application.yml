@@ -7,9 +7,12 @@ spring:
         web-allow-others: true
       enabled: true
   datasource:
-    url: jdbc:h2:file:./src/main/resources/db/DDHomePageDB
+    url: jdbc:h2:file:./HomePage/data/db/DDHomePageDB
     driver-class-name: org.h2.Driver
     username: sa
     password:
     initialization-mode: always
     schema: classpath:db/schema.sql
+  redis:
+    host: 127.0.0.1
+    port: 6379
