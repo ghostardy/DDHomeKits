@@ -1,25 +1,21 @@
-package family.dd.DDHomeKits.HomePage.interfaces.dto;
-
-import family.dd.DDHomeKits.HomePage.domain.MessageBoard.MessageBoard;
-import family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository.MessageBoardPO;
+package family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository;
 
 import java.sql.Timestamp;
 
-public class PublishedMessageDTO {
-    public PublishedMessageDTO(String title, String content, String author, Timestamp pubDate) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
-        this.pubDate = pubDate;
-    }
-    public PublishedMessageDTO(MessageBoardPO po) {
-        this(po.getTitle(), po.getContent(), po.getAuthor(), po.getPubDate());
-    }
-
+public class MessageBoardPO {
+    private int msgId;
     private String title;
     private String content;
     private String author;
     private Timestamp pubDate;
+
+    public int getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(int msgId) {
+        this.msgId = msgId;
+    }
 
     public String getTitle() {
         return title;

@@ -1,6 +1,7 @@
 package family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository;
 
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * Managed by mybatis
  */
 @Mapper
+@Component
 public interface UserIdentityMapper {
     @Select("Select userId," +
             "username," +
@@ -60,7 +62,7 @@ public interface UserIdentityMapper {
             "authority," +
             "signUpDate) values(#{username}," +
             "#{password}," +
-            "#{status,typeHandler=UserStatusTypeHandler}," +
+            "#{status,typeHandler=family.dd.DDHomeKits.AuthCenter.domain.UserAuthentication.repository.UserStatusTypeHandler}," +
             "#{authority}," +
             "#{signUpDate})")
     void add(UserIdentityPO userIdentity);

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS UserIdentity
 (
     userId int PRIMARY KEY auto_increment,
-    username varchar (50),
+    username varchar (64),
     password varchar (1024),
     status int,
     authority bigint,
