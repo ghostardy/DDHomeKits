@@ -1,10 +1,9 @@
-package family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository;
+package family.dd.DDHomeKits.HomePage.domain.MessagePublisher.repository;
 
-import family.dd.DDHomeKits.HomePage.domain.MessageBoard.entity.Message;
+import family.dd.DDHomeKits.HomePage.domain.MessagePublisher.entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Repository

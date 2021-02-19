@@ -1,4 +1,4 @@
-package family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository;
+package family.dd.DDHomeKits.HomePage.domain.MessagePublisher.repository;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,12 +12,12 @@ public interface MessageBoardMapper {
             "title, content, " +
             "author, " +
             "pubDate " +
-            "from MessageBoard " +
+            "from MessagePublisher " +
             "order by msgId desc " +
             "limit #{limit}")
     List<MessageBoardPO> findRecentMessages(int limit);
 
-    @Insert("Insert into MessageBoard(title, " +
+    @Insert("Insert into MessagePublisher(title, " +
             "content, " +
             "author) values (#{title}, " +
             "#{content}, " +

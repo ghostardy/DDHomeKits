@@ -1,4 +1,4 @@
-package family.dd.DDHomeKits.HomePage.domain.MessageBoard.entity;
+package family.dd.DDHomeKits.HomePage.domain.MessagePublisher.entity;
 
 public class Message {
     private final int MAX_TITLE_LENGTH = 128;

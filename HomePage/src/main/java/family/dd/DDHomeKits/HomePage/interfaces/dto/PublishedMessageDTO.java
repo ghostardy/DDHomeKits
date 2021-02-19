@@ -1,7 +1,6 @@
 package family.dd.DDHomeKits.HomePage.interfaces.dto;
 
-import family.dd.DDHomeKits.HomePage.domain.MessageBoard.MessageBoard;
-import family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository.MessageBoardPO;
+import family.dd.DDHomeKits.HomePage.domain.MessagePublisher.repository.MessageBoardPO;
 
 import java.sql.Timestamp;
 

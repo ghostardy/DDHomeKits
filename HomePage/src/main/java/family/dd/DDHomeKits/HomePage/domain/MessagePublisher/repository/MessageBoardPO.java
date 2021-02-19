@@ -1,4 +1,4 @@
-package family.dd.DDHomeKits.HomePage.domain.MessageBoard.repository;
+package family.dd.DDHomeKits.HomePage.domain.MessagePublisher.repository;
 
 import java.sql.Timestamp;
 
