@@ -1148,6 +1148,10 @@ textarea.contact_input {
     display: none;
 }
 
+.ajax_message_board_form_success,.columns.ajax_message_board_form_success {
+    display: none;
+}
+
 .search_bar input {
     float: right;
 }

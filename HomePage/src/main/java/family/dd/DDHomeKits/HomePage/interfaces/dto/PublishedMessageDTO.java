@@ -3,13 +3,15 @@ package family.dd.DDHomeKits.HomePage.interfaces.dto;
 import family.dd.DDHomeKits.HomePage.domain.MessagePublisher.repository.MessageBoardPO;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class PublishedMessageDTO {
     public PublishedMessageDTO(String title, String content, String author, Timestamp pubDate) {
         this.title = title;
         this.content = content;
         this.author = author;
-        this.pubDate = pubDate;
+        setPubDate(pubDate);
     }
     public PublishedMessageDTO(MessageBoardPO po) {
         this(po.getTitle(), po.getContent(), po.getAuthor(), po.getPubDate());
@@ -18,7 +20,7 @@ public class PublishedMessageDTO {
     private String title;
     private String content;
     private String author;
-    private Timestamp pubDate;
+    private String pubDate;
 
     public String getTitle() {
         return title;
@@ -44,11 +46,15 @@ public class PublishedMessageDTO {
         this.author = author;
     }
 
-    public Timestamp getPubDate() {
+    public String getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Timestamp pubDate) {
+    public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
+    }
+
+    public void setPubDate(Timestamp pubDate) {
+        this.pubDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(pubDate);
     }
 }

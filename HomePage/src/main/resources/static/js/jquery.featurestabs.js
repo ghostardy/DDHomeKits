@@ -168,7 +168,7 @@
 		
 		//var tabs_nav = container.find('td.tabs_nav').clone();
 		var tabs_nav = container.find('div.tabs_nav_small');
-		var tab_links = tabs_nav.find('a');
+		var tab_links = tabs_nav.find('a.tab_menu_item');
 		var send_message = container.find('div.send_message');
 
 		
@@ -252,7 +252,7 @@
 			//generateForSmallScreens(container);
 			//setTabHeights(container);
 			
-			var tab_links = container.find('div.tabs_nav_small a');
+			var tab_links = container.find('div.tabs_nav_small a.tab_menu_item');
 			
 			// Setup Tab Links
 			var total_tabs = tab_links.length;

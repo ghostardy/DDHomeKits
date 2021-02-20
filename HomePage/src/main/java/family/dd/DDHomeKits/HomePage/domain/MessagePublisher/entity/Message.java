@@ -9,9 +9,9 @@ public class Message {
     private String author;
 
     public Message(String title, String content, String author) {
-        this.title = title.substring(0, MAX_TITLE_LENGTH);
-        this.content = content.substring(0, MAX_CONTENT_LENGTH);
-        this.author = author.substring(0, MAX_AUTHOR_LENGTH);
+        this.title = title.length()>MAX_TITLE_LENGTH?title.substring(0, MAX_TITLE_LENGTH):title;
+        this.content = content.length()>MAX_CONTENT_LENGTH?content.substring(0, MAX_CONTENT_LENGTH):content;
+        this.author = author.length()>MAX_AUTHOR_LENGTH?author.substring(0, MAX_AUTHOR_LENGTH):author;
     }
 
     public String getTitle() {

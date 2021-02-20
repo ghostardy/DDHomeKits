@@ -10,15 +10,15 @@ import java.util.List;
 
 @Service
 public class MessageBoardService {
-    MessagePublisher messagePublisher;
+    private MessagePublisher messagePublisher;
 
     @Autowired
     public void setMessagePublisher(MessagePublisher messagePublisher) {
         this.messagePublisher = messagePublisher;
     }
 
-    public void publish(String title, String content, String author){
-        messagePublisher.publish(new Message(title, content, author));
+    public void publish(String title, String content){
+        messagePublisher.publish(new Message(title, content, "Anonymous DD"));
     }
 
     public List<PublishedMessageDTO> listRecentTenMessages(){

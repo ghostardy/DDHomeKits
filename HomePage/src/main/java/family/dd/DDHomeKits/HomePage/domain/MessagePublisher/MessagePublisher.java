@@ -28,10 +28,7 @@ public class MessagePublisher {
         List<MessageBoardPO> poList = repository.findRecentMessages(limit);
         List<PublishedMessageDTO> dtoList = poList.stream()
                 .sorted(Comparator.comparing(MessageBoardPO::getPubDate).reversed())
-                .map(po->new PublishedMessageDTO(po.getTitle(),
-                        po.getContent(),
-                        po.getAuthor(),
-                        po.getPubDate())).collect(Collectors.toList());
+                .map(po->new PublishedMessageDTO(po)).collect(Collectors.toList());
         return dtoList;
     }
 }

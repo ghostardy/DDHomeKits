@@ -12,12 +12,12 @@ public interface MessageBoardMapper {
             "title, content, " +
             "author, " +
             "pubDate " +
-            "from MessagePublisher " +
+            "from MessageBoard " +
             "order by msgId desc " +
             "limit #{limit}")
     List<MessageBoardPO> findRecentMessages(int limit);
 
-    @Insert("Insert into MessagePublisher(title, " +
+    @Insert("Insert into MessageBoard(title, " +
             "content, " +
             "author) values (#{title}, " +
             "#{content}, " +
